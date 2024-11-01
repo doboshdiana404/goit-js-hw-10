@@ -16,3 +16,133 @@
 @import url('./badges.css');
 @import url('./back-link.css');
 @import url('./footer.css');
+
+.timer {
+  display: flex;
+  gap: 24px;
+  margin-top: 32px;
+}
+.field {
+  display: flex;
+  flex-direction: column;
+}
+.input-off {
+  border: none;
+  border-radius: 4px;
+  border: 1px solid #808080;
+  width: 280px;
+  background: #fff;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 1.5;
+  letter-spacing: 0.04em;
+  color: #2e2f42;
+  padding-left: 16px;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 16px;
+}
+.input-on {
+  border: none;
+  border-radius: 4px;
+  border: 1px solid #4e75ff;
+  width: 280px;
+  background: #fff;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 1.5;
+  letter-spacing: 0.04em;
+  color: #2e2f42;
+  padding-left: 16px;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 16px;
+}
+
+.active-btn {
+  background: #4e75ff;
+  color: #fff;
+  pointer-events: visible;
+  border: 0;
+  border-radius: 8px;
+  padding: 8px 16px;
+  width: 75px;
+  height: 40px;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 1.5;
+  letter-spacing: 0.04em;
+}
+
+.value {
+  font-weight: 400;
+  font-size: 40px;
+  line-height: 1.2;
+  letter-spacing: 0.04em;
+  color: #2e2f42;
+}
+
+.label {
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 1.5;
+  color: #2e2f42;
+}
+
+.future-date-btn {
+  background: #cfcfcf;
+  color: #989898;
+  border: 0;
+  border-radius: 8px;
+  padding: 8px 16px;
+  width: 75px;
+  height: 40px;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 1.5;
+  letter-spacing: 0.04em;
+  pointer-events: none;
+}
+
+.form {
+  padding-top: 36px;
+}
+.input-delay {
+  border: none;
+  border: 1px solid #808080;
+  border-radius: 4px;
+  width: 360px;
+  height: 40px;
+  margin-top: 8px;
+  margin-bottom: 16px;
+}
+
+.label-input {
+  display: flex;
+  flex-direction: column;
+}
+fieldset {
+  width: 336px;
+  border: 1px solid #808080;
+  border-radius: 4px;
+}
+.radio-container {
+  display: flex;
+  justify-content: center;
+  gap: 48px;
+}
+
+.snackbar-btn {
+  border: none;
+  border-radius: 8px;
+  padding: 8px 16px;
+  width: 360px;
+  height: 40px;
+  background: #4e75ff;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 1.5;
+  letter-spacing: 0.04em;
+  color: #fff;
+  margin-top: 24px;
+}
