@@ -6,7 +6,7 @@ const resultDays = document.querySelector('#label-days');
 const resultHours = document.querySelector('#label-hours');
 const resultMinutes = document.querySelector('#label-minutes');
 const resultSeconds = document.querySelector('#label-second');
-const datePicker = document.querySelector("#datetime-picker");
+const datePicker = document.querySelector('#datetime-picker');
 const mainBtn = document.querySelector('.btn');
 let targetDate = null;
 function showNotification() {
@@ -35,41 +35,37 @@ function convertMs(ms) {
 
   return { days, hours, minutes, seconds };
 }
-initializeFlatpickr();
+const options = {
+  enableTime: true, // Дозволяє вибір часу
+  time_24hr: true,
+  defaultDate: new Date(),
+  minuteIncrement: 1,
+  dateFormat: 'Y-m-d H:i', // Формат дати
+  onOpen: function () {
+    datePicker.classList.remove('input-off');
+    datePicker.classList.add('input-on'); // Додаємо стиль при відкритті календаря
+  },
+  onClose(selectedDates) {
+    datePicker.classList.remove('input-on'); // Видаляємо стиль при закритті календаря
+    datePicker.classList.add('input-off');
+    targetDate = selectedDates[0]; // Зберігає обрану дату
+    checkDate(); // Перевірка дати при закритті календаря
+  },
+};
+flatpickr('#datetime-picker', options);
 
-function initializeFlatpickr() {
-  flatpickr('#datetime-picker', {
-    enableTime: true, // Дозволяє вибір часу
-    dateFormat: 'Y-m-d H:i', // Формат дати
-    onOpen: function() {
-        datePicker.classList.remove("input-off"); 
-        datePicker.classList.add("input-on"); // Додаємо стиль при відкритті календаря
-    },
-    onClose: function() {
-        datePicker.classList.remove("input-on"); // Видаляємо стиль при закритті календаря
-        datePicker.classList.add("input-off"); 
-    },
-    onClose: function (selectedDates) {
-      targetDate = selectedDates[0]; // Зберігає обрану дату
-      checkDate(); // Перевірка дати при закритті календаря
-    },
-  });
-}
+// Функція перевірки дати
+function checkDate() {
+  const now = new Date();
 
- // Функція перевірки дати
- function checkDate() {
-    const now = new Date();
-
-    if (targetDate && targetDate > now) {  
-      
-       mainBtn.classList.remove("future-date-btn");
-       mainBtn.classList.add("active-btn");
-    } else {
-        
-        mainBtn.classList.remove("active-btn");
-        mainBtn.classList.add("future-date-btn");
- 
-    }
+  if (targetDate && targetDate > now) {
+    mainBtn.classList.remove('future-date-btn');
+    mainBtn.classList.add('active-btn');
+  } else {
+    mainBtn.classList.remove('active-btn');
+    mainBtn.classList.add('future-date-btn');
+    showNotification();
+  }
 }
 
 // Функція зворотного відліку таймера
@@ -87,13 +83,13 @@ function startTimer() {
   timerElement._interval = setInterval(() => {
     const now = new Date().getTime();
     const distance = targetDate - now;
-          mainBtn.classList.remove("active-btn");
-      mainBtn.classList.add("future-date-btn");
-      datePicker.classList.remove("input-on"); // Видаляємо стиль при закритті календаря
-      datePicker.classList.add("input-off");
+    mainBtn.classList.remove('active-btn');
+    mainBtn.classList.add('future-date-btn');
+    datePicker.classList.remove('input-on'); // Видаляємо стиль при закритті календаря
+    datePicker.classList.add('input-off');
     if (distance <= 0) {
       clearInterval(timerElement._interval);
-      datePicker.disabled = false; 
+      datePicker.disabled = false;
       showNotification();
       return;
     }
@@ -111,7 +107,6 @@ function startTimer() {
       .seconds.toString()
       .padStart(2, '0')}`;
   }, 1000);
-  
 }
 
 mainBtn.addEventListener('click', startTimer);
